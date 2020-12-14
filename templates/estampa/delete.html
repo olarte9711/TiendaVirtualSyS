@@ -1,0 +1,7 @@
+<h1>Confirmar borrado</h1>
+<h5>
+    ¿está seguro de eliminar la estampa?
+</h5>
+<form method="POST">{% csrf_token %}
+    <button type="submit">Confirmar</button>
+</form>

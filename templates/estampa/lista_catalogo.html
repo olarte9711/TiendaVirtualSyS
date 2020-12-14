@@ -1,0 +1,12 @@
+<h1>Catalogo</h1>
+<form method="GET">{% csrf_token %}
+    <input type="text"id="kword" name="kword" placeholder="Buscar Estampa">
+    <button type="submit">Buscar</button>
+</form>
+
+<h3>lista resultados</h3>
+<ul>
+    {% for e  in estampas  %}
+        <li>{{e}}</li>
+    {% endfor %}
+</ul>
