@@ -11,36 +11,57 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+with open("secret.json") as f:
+    secret = json.loads(f.read())
+
+def get_secret(secret_name, secrets=secret):
+    try:
+        return secrets[secret_name]
+    except:
+        msg = "la variable %s no existe" % secret_name
+        raise ImproperlyConfigured(msg)
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l+mp@!bf#vgyl)q7a7w01w3m0qo6x4l6$t!v2w=bh@equleod='
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #local apps
-    'applications.camiseta',
-    'applications.estampa',
-    'applications.artista',
+)
 
-]
+LOCAL_APPS = (
+    #local apps
+    'applications.producto',
+    'applications.users',
+    'applications.venta',
+)
+
+THRID_APPS = (
+
+)
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THRID_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

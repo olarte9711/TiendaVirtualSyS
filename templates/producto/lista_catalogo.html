@@ -1,0 +1,72 @@
+
+
+{% extends "producto/base_producto.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+<div class="grid-x grid-margin-x">
+  <div class="cell grid-x grid-margin-x">
+    <form class="cell small-9 input-group" method="GET">
+      <span class="input-group-label">Nombre</span>
+      <input class="input-group-field" type="text" id="kword" name="kword" placeholder="nombre o codigo...">
+      <div class="input-group-button">
+        <input type="submit" class="button secondary" value="Buscar">
+      </div>
+    </form>
+    <div class="cell small-3">
+      <a href="{% url 'estampa_app:nueva_estampa' %}" class="button success">Registrar Nuevo</a>
+    </div>
+  </div>
+
+
+  <div class="cell grid-x grid-margin-x">
+    <div class="cell small-2">
+      <a href="?order=name">
+        <span class="label warning">Por Nombre</span>
+      </a>
+    </div>
+    <div class="cell small-2">
+      <a href="?order=date">
+        <span class="label secondary">Por Fecha</span>
+      </a>
+    </div>
+    <div class="cell small-2">
+      <a href="?order=stok">
+        <span class="label">Por Stok</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="cell grid-x grid-margin-x" style="margin-top: 2em;">
+    <table class="hover">
+      <thead>
+        <th>COD</th>
+        <th>Nombre</th>
+        <th>Artista</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        {% for estampa in estampas %}
+          <tr>
+            <td>{{estampa.id}}</td>
+            <td>{{estampa.nombre}}</td>
+            <td>{{estampa.artista.full_name}}</td>
+            <td>{{estampa.valor}}</td>
+            <td><img src="{{estampa.imagen.url}}" width="80" height="80" ></td>
+            
+            <td>
+              <a href="" class="button"><i class="fi-pencil"></i></a>
+              <a href="" class="button warning"><i class="fi-eye"></i></a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock panel-content %}

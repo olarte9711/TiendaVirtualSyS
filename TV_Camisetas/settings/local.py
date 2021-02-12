@@ -15,9 +15,9 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbSyS',
-        'USER': 'olarte9711',
-        'PASSWORD':'1234',
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('USER'),
+        'PASSWORD':get_secret('PASSWORD'),
         'HOST':'localhost',
         'PORT':'5432',
     }
@@ -27,3 +27,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS =[BASE_DIR/('static')]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/('media')

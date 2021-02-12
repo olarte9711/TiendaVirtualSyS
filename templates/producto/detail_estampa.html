@@ -1,0 +1,13 @@
+<h1>Detalle estampa {{ estampa.nombre }}</h1>
+{{estampa}}
+
+<h3>Todos los datos</h3>
+
+<p> Nombre: {{ estampa.nombre}}</p>
+<p>Descripción: {{ estampa.descripcion}}</p>
+<p> Valor: {{ estampa.valor}}</p>
+<p>Tema: {{ estampa.tema.get_state_display}}</p>
+<p>Artista: {{ estampa.artista.full_name}}</p>
+<p>Stock: {{ estampa.stock}}</p>
+<img src="{{ estampa.imagen.url}}">
+

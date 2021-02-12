@@ -1,0 +1,87 @@
+{% extends "producto/base_producto.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+<div class="grid-x grid-margin-x align-center">
+  <h3 class="cell" style="margin-bottom: 1em; text-align: center;">Datos de Estampa</h3>  
+  <form class="cell medium-9 grid-x grid-margin-x" method="POST"  enctype="multipart/form-data">{% csrf_token %}
+      
+    <div class="cell medium-6">
+      <label>Nombre:</label>
+      <div class="input-group">
+        <span class="input-group-label"><i class="fi-book"></i></span>
+        {{form.nombre}}
+      </div>
+    </div>
+
+    <div class="cell medium-6">
+      <label>Artista:</label>
+      <div class="input-group">
+        {{form.artista}}
+      </div>
+    </div>
+    <div class="cell medium-6">
+        <label>Tema:</label>
+        <div class="input-group">
+          <span class="input-group-label"><i class="fi-price-tag"></i></span>
+          {{ form.tema }}
+        </div>
+      </div>
+    <div class="cell medium-6">
+      <label>Popularidad:</label>
+      <div class="input-group">
+        <span class="input-group-label"><i class="fi-calendar"></i></span>
+        {{ form.popularidad }}
+      </div>
+    </div>
+
+    <div class="cell medium-6">
+        <label>Valor:</label>
+        <div class="input-group">
+          <span class="input-group-label"><i class="fi-dollar"></i></span>
+          {{form.valor}}
+        </div>
+    </div>
+    <div class="cell medium-6">
+        <label>Numero de ventas:</label>
+        <div class="input-group">
+          <span class="input-group-label"><i class="fi-dollar"></i></span>
+          {{form.num_ventas}}
+        </div>
+    </div>
+
+    <div class="cell medium-6">
+      <label>Numero disponibles:</label>
+      <div class="input-group">
+        <span class="input-group-label"><i class="fi-book"></i></span>
+        {{form.stock}}
+      </div>
+    </div>
+
+    <div class="cell medium-6">
+      <label>Imagen</label>
+      <div class="input-group">
+        {{form.imagen}}
+      </div>
+    </div>
+
+    <div class="cell medium-12">
+        <label>Descripcion del producto:</label>
+        <div class="input-group">
+          {{form.descripcion}}
+        </div>
+      </div>
+    
+
+    <div class="cell medium-6">
+      <button type="submit" class="success button" style="width: 200px;">Guardar</button>
+      {% if product %}
+      <a href="{% url 'producto_app:producto-delete' product.id %}" class="alert button clear">Eliminar</a>
+      {% endif %}
+    </div>
+  </form>
+</div>
+
+{% endblock panel-content %}
