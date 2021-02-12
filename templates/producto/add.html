@@ -64,6 +64,7 @@
       <label>Imagen</label>
       <div class="input-group">
         {{form.imagen}}
+        
       </div>
     </div>
 
@@ -77,8 +78,8 @@
 
     <div class="cell medium-6">
       <button type="submit" class="success button" style="width: 200px;">Guardar</button>
-      {% if product %}
-      <a href="{% url 'producto_app:producto-delete' product.id %}" class="alert button clear">Eliminar</a>
+      {% if estampa %}
+      <a href="{% url 'estampa_app:eliminar_estampa' estampa.id %}" class="alert button clear">Eliminar</a>
       {% endif %}
     </div>
   </form>

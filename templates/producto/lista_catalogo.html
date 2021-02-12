@@ -59,8 +59,8 @@
             <td><img src="{{estampa.imagen.url}}" width="80" height="80" ></td>
             
             <td>
-              <a href="" class="button"><i class="fi-pencil"></i></a>
-              <a href="" class="button warning"><i class="fi-eye"></i></a>
+              <a href="{% url 'estampa_app:modificar_estampa' estampa.id %}" class="button"><i class="fi-pencil"></i></a>
+              <a href="{% url 'estampa_app:estampa_detail' estampa.id %}" class="button warning"><i class="fi-eye"></i></a>
             </td>
           </tr>
         {% endfor %}

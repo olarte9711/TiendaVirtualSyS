@@ -52,19 +52,12 @@ class EstampaCreateView(CreateView):
 
 class EstampaUpdateView(UpdateView):
     model = Estampa
-    template_name = "producto/update.html"
-    fields = ('__all__')
-    success_url = reverse_lazy('estampa_app:correcto')
+    template_name = "producto/add.html"
+    form_class = EstampaForm
+    success_url = reverse_lazy('estampa_app:catalogo_estampas')
 
-    def post(self,request, *args, **kwargs):
-        self.object = self.get_object()
-        print(request.POST['nombre'])
-        return super().post(request, *args, **kwargs)
-
-    def form_valid(self,form):
-        return  super(EstampaUpdateView, self).form_valid(form)
 
 class EstampaDeleteView(DeleteView):
     model = Estampa
     template_name = "producto/delete.html"
-    success_url = reverse_lazy('estampa_app:correcto')
+    success_url = reverse_lazy('estampa_app:catalogo_estampas')

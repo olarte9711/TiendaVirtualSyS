@@ -46,6 +46,7 @@ class EstampaForm(forms.ModelForm):
                     'class': 'input-group-field',
                 }
             ),
+            
         }
     # validations
    
