@@ -2,7 +2,7 @@
 
 ## Proyecto tienda virtual de camisetas personalizadas.
 
-Universidad Distrital Francisco Jośe de Caldas
+>Universidad Distrital Francisco Jośe de Caldas 
 Facultad de Ingeniería
 Seminario de ingeniería de software.
 
