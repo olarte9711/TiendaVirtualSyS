@@ -1,6 +1,6 @@
 # TiendaVirtualSyS
 
-Proyecto tienda virtual de camisetas personalizadas.
+##Proyecto tienda virtual de camisetas personalizadas.
 
 Universidad Distrital Francisco Jośe de Caldas
 Facultad de Ingeniería
