@@ -23,3 +23,5 @@ Para la ejecución:
 
 Instalar los paquetes que aparecen en requirements
 
+También tener encuenta la conexión con la BD, se deja como recurso un backup, manejado en postgresql.
+
