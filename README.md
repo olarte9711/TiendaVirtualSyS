@@ -23,5 +23,7 @@ Para la ejecución:
 
 Instalar los paquetes que aparecen en requirements
 
-También tener encuenta la conexión con la BD, se deja como recurso un backup, manejado en postgresql.
+También tener encuenta la conexión con la BD, se deja como recurso un backup, manejado en postgresql. Recurso para poder realizar la restauración.
+
+https://neunapp.com/contenido/copia-de-seguridad-de-una-base-de-datos-postgres-linux-ubuntu-22063
 
