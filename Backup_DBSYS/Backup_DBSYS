@@ -1,0 +1,1315 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: artista_artista; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.artista_artista (
+    id integer NOT NULL,
+    nombres character varying(30) NOT NULL,
+    apellidos character varying(30) NOT NULL,
+    email character varying(50) NOT NULL,
+    username character varying(50) NOT NULL,
+    password character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.artista_artista OWNER TO olarte9711;
+
+--
+-- Name: artista_artista_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.artista_artista_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.artista_artista_id_seq OWNER TO olarte9711;
+
+--
+-- Name: artista_artista_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.artista_artista_id_seq OWNED BY public.artista_artista.id;
+
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.auth_group (
+    id integer NOT NULL,
+    name character varying(150) NOT NULL
+);
+
+
+ALTER TABLE public.auth_group OWNER TO olarte9711;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.auth_group_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_id_seq OWNER TO olarte9711;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.auth_group_id_seq OWNED BY public.auth_group.id;
+
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.auth_group_permissions (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_group_permissions OWNER TO olarte9711;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.auth_group_permissions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_permissions_id_seq OWNER TO olarte9711;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.auth_group_permissions_id_seq OWNED BY public.auth_group_permissions.id;
+
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.auth_permission (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.auth_permission OWNER TO olarte9711;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.auth_permission_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_permission_id_seq OWNER TO olarte9711;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.auth_permission_id_seq OWNED BY public.auth_permission.id;
+
+
+--
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.auth_user (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    is_superuser boolean NOT NULL,
+    username character varying(150) NOT NULL,
+    first_name character varying(150) NOT NULL,
+    last_name character varying(150) NOT NULL,
+    email character varying(254) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.auth_user OWNER TO olarte9711;
+
+--
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.auth_user_groups (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_user_groups OWNER TO olarte9711;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.auth_user_groups_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_groups_id_seq OWNER TO olarte9711;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.auth_user_groups_id_seq OWNED BY public.auth_user_groups.id;
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.auth_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_id_seq OWNER TO olarte9711;
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.auth_user_id_seq OWNED BY public.auth_user.id;
+
+
+--
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.auth_user_user_permissions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_user_user_permissions OWNER TO olarte9711;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.auth_user_user_permissions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_user_permissions_id_seq OWNER TO olarte9711;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.auth_user_user_permissions_id_seq OWNED BY public.auth_user_user_permissions.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    content_type_id integer,
+    user_id integer NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE public.django_admin_log OWNER TO olarte9711;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.django_admin_log_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_admin_log_id_seq OWNER TO olarte9711;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.django_admin_log_id_seq OWNED BY public.django_admin_log.id;
+
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.django_content_type (
+    id integer NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.django_content_type OWNER TO olarte9711;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.django_content_type_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_content_type_id_seq OWNER TO olarte9711;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.django_content_type_id_seq OWNED BY public.django_content_type.id;
+
+
+--
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.django_migrations (
+    id integer NOT NULL,
+    app character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    applied timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_migrations OWNER TO olarte9711;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.django_migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_migrations_id_seq OWNER TO olarte9711;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.django_migrations_id_seq OWNED BY public.django_migrations.id;
+
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_session OWNER TO olarte9711;
+
+--
+-- Name: estampa_estampa; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.estampa_estampa (
+    id integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    descripcion text NOT NULL,
+    tema character varying(1) NOT NULL,
+    popularidad character varying(1) NOT NULL,
+    artista_id integer NOT NULL,
+    valor integer NOT NULL
+);
+
+
+ALTER TABLE public.estampa_estampa OWNER TO olarte9711;
+
+--
+-- Name: estampa_estampa_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.estampa_estampa_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.estampa_estampa_id_seq OWNER TO olarte9711;
+
+--
+-- Name: estampa_estampa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.estampa_estampa_id_seq OWNED BY public.estampa_estampa.id;
+
+
+--
+-- Name: producto_estampa; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.producto_estampa (
+    id integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    descripcion text NOT NULL,
+    valor integer NOT NULL,
+    tema character varying(1) NOT NULL,
+    popularidad character varying(1) NOT NULL,
+    imagen character varying(100),
+    stock integer NOT NULL,
+    num_ventas integer NOT NULL,
+    descontino boolean NOT NULL,
+    artista_id integer NOT NULL
+);
+
+
+ALTER TABLE public.producto_estampa OWNER TO olarte9711;
+
+--
+-- Name: producto_estampa_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.producto_estampa_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.producto_estampa_id_seq OWNER TO olarte9711;
+
+--
+-- Name: producto_estampa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.producto_estampa_id_seq OWNED BY public.producto_estampa.id;
+
+
+--
+-- Name: users_user; Type: TABLE; Schema: public; Owner: olarte9711
+--
+
+CREATE TABLE public.users_user (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    email character varying(254) NOT NULL,
+    full_name character varying(100) NOT NULL,
+    ocupacion character varying(1) NOT NULL,
+    genero character varying(1) NOT NULL,
+    fecha_nacimiento date,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL
+);
+
+
+ALTER TABLE public.users_user OWNER TO olarte9711;
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: olarte9711
+--
+
+CREATE SEQUENCE public.users_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_user_id_seq OWNER TO olarte9711;
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: olarte9711
+--
+
+ALTER SEQUENCE public.users_user_id_seq OWNED BY public.users_user.id;
+
+
+--
+-- Name: artista_artista id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.artista_artista ALTER COLUMN id SET DEFAULT nextval('public.artista_artista_id_seq'::regclass);
+
+
+--
+-- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.auth_group_id_seq'::regclass);
+
+
+--
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('public.auth_permission_id_seq'::regclass);
+
+
+--
+-- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user ALTER COLUMN id SET DEFAULT nextval('public.auth_user_id_seq'::regclass);
+
+
+--
+-- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_groups ALTER COLUMN id SET DEFAULT nextval('public.auth_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('public.django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval('public.django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('public.django_migrations_id_seq'::regclass);
+
+
+--
+-- Name: estampa_estampa id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.estampa_estampa ALTER COLUMN id SET DEFAULT nextval('public.estampa_estampa_id_seq'::regclass);
+
+
+--
+-- Name: producto_estampa id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.producto_estampa ALTER COLUMN id SET DEFAULT nextval('public.producto_estampa_id_seq'::regclass);
+
+
+--
+-- Name: users_user id; Type: DEFAULT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.users_user ALTER COLUMN id SET DEFAULT nextval('public.users_user_id_seq'::regclass);
+
+
+--
+-- Data for Name: artista_artista; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.artista_artista (id, nombres, apellidos, email, username, password) FROM stdin;
+1	Óscar	Olarte	olarte9711@gmail.com	olarte9711	1234
+2	María	Cardenas	mcardenas@mail.com	mcardenas	232
+\.
+
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can view log entry	1	view_logentry
+5	Can add permission	2	add_permission
+6	Can change permission	2	change_permission
+7	Can delete permission	2	delete_permission
+8	Can view permission	2	view_permission
+9	Can add group	3	add_group
+10	Can change group	3	change_group
+11	Can delete group	3	delete_group
+12	Can view group	3	view_group
+13	Can add user	4	add_user
+14	Can change user	4	change_user
+15	Can delete user	4	delete_user
+16	Can view user	4	view_user
+17	Can add content type	5	add_contenttype
+18	Can change content type	5	change_contenttype
+19	Can delete content type	5	delete_contenttype
+20	Can view content type	5	view_contenttype
+21	Can add session	6	add_session
+22	Can change session	6	change_session
+23	Can delete session	6	delete_session
+24	Can view session	6	view_session
+25	Can add Estampa	7	add_estampa
+26	Can change Estampa	7	change_estampa
+27	Can delete Estampa	7	delete_estampa
+28	Can view Estampa	7	view_estampa
+29	Can add Artista	8	add_artista
+30	Can change Artista	8	change_artista
+31	Can delete Artista	8	delete_artista
+32	Can view Artista	8	view_artista
+33	Can add Estampa	9	add_estampa
+34	Can change Estampa	9	change_estampa
+35	Can delete Estampa	9	delete_estampa
+36	Can view Estampa	9	view_estampa
+37	Can add user	10	add_user
+38	Can change user	10	change_user
+39	Can delete user	10	delete_user
+40	Can view user	10	view_user
+\.
+
+
+--
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+1	pbkdf2_sha256$180000$LrhOywT0Rjcb$+HZlSLIc3HrNsh8Q2HUzUOjuzycECXC0rq6ZbgNBmuw=	2021-02-12 11:45:44.81367-05	t	olarte9711			olarte9711@gmail.com	t	t	2020-12-14 02:09:04.373948-05
+\.
+
+
+--
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2020-12-14 02:12:42.969351-05	1	1-Óscar-Olarte	1	[{"added": {}}]	8	1
+2	2020-12-14 02:13:07.547676-05	2	2-María-Cardenas	1	[{"added": {}}]	8	1
+3	2020-12-14 02:14:10.543769-05	1	1-Superman	1	[{"added": {}}]	7	1
+4	2020-12-14 02:15:41.83207-05	2	2-Bicicleta	1	[{"added": {}}]	7	1
+5	2020-12-14 02:20:30.397478-05	1	1-Superman	2	[{"changed": {"fields": ["Valor"]}}]	7	1
+6	2020-12-14 02:20:35.381082-05	1	1-Superman	2	[]	7	1
+7	2020-12-14 02:20:46.550545-05	2	2-Bicicleta	2	[{"changed": {"fields": ["Valor"]}}]	7	1
+8	2021-02-11 16:46:46.017768-05	1	designer@gmail.com	1	[{"added": {}}]	10	1
+9	2021-02-11 16:47:07.544216-05	1	1-Ataque 77	1	[{"added": {}}]	9	1
+10	2021-02-11 16:56:55.262918-05	1	1-Ataque 77	2	[{"changed": {"fields": ["Imagen"]}}]	9	1
+11	2021-02-12 09:21:31.152637-05	2	2-Mar-	1	[{"added": {}}]	10	1
+12	2021-02-12 09:22:50.657343-05	2	2-Nirvana	1	[{"added": {}}]	9	1
+13	2021-02-12 11:45:58.564814-05	3	3-Dragón BallZ	2	[{"changed": {"fields": ["Imagen"]}}]	9	1
+14	2021-02-12 13:06:15.2212-05	5	5-Iron Maiden	2	[{"changed": {"fields": ["Imagen"]}}]	9	1
+15	2021-02-12 13:06:29.683172-05	8	8-Iron Maiden	3		9	1
+16	2021-02-12 13:06:29.758459-05	7	7-Iron Maiden	3		9	1
+17	2021-02-12 13:06:29.8443-05	6	6-Iron Maiden	3		9	1
+18	2021-02-12 17:09:18.629838-05	9	9-Mickey Mouse	2	[{"changed": {"fields": ["Imagen"]}}]	9	1
+19	2021-02-12 17:59:50.660171-05	1	1-Ataque 77	2	[{"changed": {"fields": ["Imagen"]}}]	9	1
+20	2021-02-13 18:37:06.187556-05	3	3-Dana Rodríguez-1	1	[{"added": {}}]	10	1
+21	2021-02-13 18:46:26.27934-05	4	4-Camilo Rojas-1	1	[{"added": {}}]	10	1
+\.
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.django_content_type (id, app_label, model) FROM stdin;
+1	admin	logentry
+2	auth	permission
+3	auth	group
+4	auth	user
+5	contenttypes	contenttype
+6	sessions	session
+7	estampa	estampa
+8	artista	artista
+9	producto	estampa
+10	users	user
+\.
+
+
+--
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2020-12-14 02:07:05.640832-05
+2	auth	0001_initial	2020-12-14 02:07:06.231692-05
+3	admin	0001_initial	2020-12-14 02:07:07.376087-05
+4	admin	0002_logentry_remove_auto_add	2020-12-14 02:07:07.533174-05
+5	admin	0003_logentry_add_action_flag_choices	2020-12-14 02:07:07.551469-05
+6	artista	0001_initial	2020-12-14 02:07:07.61092-05
+7	contenttypes	0002_remove_content_type_name	2020-12-14 02:07:07.655917-05
+8	auth	0002_alter_permission_name_max_length	2020-12-14 02:07:07.674108-05
+9	auth	0003_alter_user_email_max_length	2020-12-14 02:07:07.698821-05
+10	auth	0004_alter_user_username_opts	2020-12-14 02:07:07.718781-05
+11	auth	0005_alter_user_last_login_null	2020-12-14 02:07:07.739242-05
+12	auth	0006_require_contenttypes_0002	2020-12-14 02:07:07.751197-05
+13	auth	0007_alter_validators_add_error_messages	2020-12-14 02:07:07.771656-05
+14	auth	0008_alter_user_username_max_length	2020-12-14 02:07:07.986216-05
+15	auth	0009_alter_user_last_name_max_length	2020-12-14 02:07:08.03303-05
+16	auth	0010_alter_group_name_max_length	2020-12-14 02:07:08.054869-05
+17	auth	0011_update_proxy_permissions	2020-12-14 02:07:08.100846-05
+18	auth	0012_alter_user_first_name_max_length	2020-12-14 02:07:08.121251-05
+19	estampa	0001_initial	2020-12-14 02:07:08.269333-05
+20	sessions	0001_initial	2020-12-14 02:07:08.548322-05
+21	estampa	0002_auto_20201214_0719	2020-12-14 02:20:05.688541-05
+22	users	0001_initial	2021-02-11 16:41:27.5297-05
+23	producto	0001_initial	2021-02-11 16:41:27.899983-05
+\.
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+eu28qrl2uf8me1p183gm78tpfr2to74q	.eJxVjDsOwjAQRO_iGln-BceU9JzB2l2vcQDZUpxUiLuTSClAmmrem3mLCOtS4tp5jlMSF6HF6bdDoCfXHaQH1HuT1OoyTyh3RR60y1tL_Loe7t9BgV62dc7JjBiIPZLLowkueTPo4LU9O7BsjWINAwSwCh1ltMlkyuCNgi0oPl_1OTh5:1kohzK:VoIrzLJ6ytGJ_BwjBlBXabF9HrFptOCSc0L5c6IH3jw	2020-12-28 02:09:42.914156-05
+k8c9xypvuyw4a9y74y3cj0wczmqlx40t	YjZkMTNkMTAyZTNkYjNjNjQxMWU0ODI2M2MxNTZjNTk4ZmQ5Y2E3Yjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJiNTQ5OTczNDUwYmFlMGQ4MGJjZGViNDk1NjRjZjEzNDI4YjJlZmEyIn0=	2021-02-25 16:39:39.071552-05
+6ppqg72iatb3bquntky1rgsb2kbigjq8	YjZkMTNkMTAyZTNkYjNjNjQxMWU0ODI2M2MxNTZjNTk4ZmQ5Y2E3Yjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJiNTQ5OTczNDUwYmFlMGQ4MGJjZGViNDk1NjRjZjEzNDI4YjJlZmEyIn0=	2021-02-26 11:45:44.8661-05
+\.
+
+
+--
+-- Data for Name: estampa_estampa; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.estampa_estampa (id, nombre, descripcion, tema, popularidad, artista_id, valor) FROM stdin;
+2	Bicicleta	Estampa de bicicleta clasica	0	2	2	33000
+3	Nirvana	Estampa de Nirvana	2	2	1	23000
+4	Nike	Logo deportivo de NIke	0	0	2	15000
+\.
+
+
+--
+-- Data for Name: producto_estampa; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.producto_estampa (id, nombre, descripcion, valor, tema, popularidad, imagen, stock, num_ventas, descontino, artista_id) FROM stdin;
+5	Iron Maiden	Estampa de camiseta de Iron Maiden.	29000	2	2	producto/camiseta-manga-corta-iron-maiden_Q2fSkvo.jpg	15	0	f	1
+2	Nirvana	Estampado de la banda de rock de Nirvana	19000	2	2	producto/Screenshot_2021-02-12_Camiseta_de_Nirvana_-_Dussan_Designs.png	13	2	f	2
+3	Dragón BallZ	Estampado de Goku super sayayin blue	23000	4	1	producto/1bac4c972474dc110cb3b1b23ca79e55.jpg	30	0	f	1
+10	Mickey Mouse	Estampa de Micky MOuse	10000	4	0	producto/MickeyMOuse_zTK2lBv.jpg	12	0	f	1
+1	Ataque 77	Estampa alusiva a la banda de rock argentina Ataque 77	30000	2	1	producto/ataque77.jpeg	10	0	f	1
+4	Batman	Estampado de Batman símbolo, color gris.	12000	4	2	producto/images_miOrBsx.jpeg	31	0	f	1
+11	Los pitufos	Estampa de la película de los pitufos	8000	4	0	producto/Screenshot_2021-02-13_camiseta_de_los_pitufos_-_Búsqueda_de_Google.png	11	0	f	4
+\.
+
+
+--
+-- Data for Name: users_user; Type: TABLE DATA; Schema: public; Owner: olarte9711
+--
+
+COPY public.users_user (id, password, last_login, email, full_name, ocupacion, genero, fecha_nacimiento, is_staff, is_active) FROM stdin;
+1	54321	2021-02-09 16:45:41-05	designer@gmail.com	Andrés Rubiano	1	M	2001-02-04	t	t
+2	1234	2021-02-09 09:21:17-05	mafedesing@gmail.com	Mar			\N	f	f
+3	4321	2021-02-13 18:36:36-05	danadesigner@gmail.com	Dana Rodríguez	1	F	2000-02-13	t	t
+4	1234	2021-02-13 18:45:50-05	milo@desing.com	Camilo Rojas	1	M	1999-02-13	t	t
+\.
+
+
+--
+-- Name: artista_artista_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.artista_artista_id_seq', 2, true);
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 40, true);
+
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.auth_user_id_seq', 1, true);
+
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 21, true);
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 10, true);
+
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 23, true);
+
+
+--
+-- Name: estampa_estampa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.estampa_estampa_id_seq', 4, true);
+
+
+--
+-- Name: producto_estampa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.producto_estampa_id_seq', 11, true);
+
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: olarte9711
+--
+
+SELECT pg_catalog.setval('public.users_user_id_seq', 4, true);
+
+
+--
+-- Name: artista_artista artista_artista_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.artista_artista
+    ADD CONSTRAINT artista_artista_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_codename_01ab375a_uniq UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups auth_user_groups_user_id_group_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_group_id_94350c0c_uniq UNIQUE (user_id, group_id);
+
+
+--
+-- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user
+    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_permission_id_14a6b632_uniq UNIQUE (user_id, permission_id);
+
+
+--
+-- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user
+    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
+
+
+--
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_app_label_model_76bd3d3b_uniq UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_migrations
+    ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: estampa_estampa estampa_estampa_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.estampa_estampa
+    ADD CONSTRAINT estampa_estampa_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: producto_estampa producto_estampa_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.producto_estampa
+    ADD CONSTRAINT producto_estampa_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_user users_user_email_key; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.users_user
+    ADD CONSTRAINT users_user_email_key UNIQUE (email);
+
+
+--
+-- Name: users_user users_user_pkey; Type: CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.users_user
+    ADD CONSTRAINT users_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_group_name_a6ea08ec_like ON public.auth_group USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_permission_content_type_id_2f476e4b ON public.auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: auth_user_groups_group_id_97559544; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_user_groups_group_id_97559544 ON public.auth_user_groups USING btree (group_id);
+
+
+--
+-- Name: auth_user_groups_user_id_6a12ed8b; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_user_groups_user_id_6a12ed8b ON public.auth_user_groups USING btree (user_id);
+
+
+--
+-- Name: auth_user_user_permissions_permission_id_1fbb5f2c; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_user_user_permissions_permission_id_1fbb5f2c ON public.auth_user_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id_a95ead1b; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_user_user_permissions_user_id_a95ead1b ON public.auth_user_user_permissions USING btree (user_id);
+
+
+--
+-- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX auth_user_username_6821ab7c_like ON public.auth_user USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON public.django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX django_admin_log_user_id_c564eba6 ON public.django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX django_session_expire_date_a5c62663 ON public.django_session USING btree (expire_date);
+
+
+--
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- Name: estampa_estampa_artista_id_464a6eaf; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX estampa_estampa_artista_id_464a6eaf ON public.estampa_estampa USING btree (artista_id);
+
+
+--
+-- Name: producto_estampa_artista_id_5e9c321d; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX producto_estampa_artista_id_5e9c321d ON public.producto_estampa USING btree (artista_id);
+
+
+--
+-- Name: users_user_email_243f6e77_like; Type: INDEX; Schema: public; Owner: olarte9711
+--
+
+CREATE INDEX users_user_email_243f6e77_like ON public.users_user USING btree (email varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_group_id_97559544_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_6a12ed8b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: estampa_estampa estampa_estampa_artista_id_464a6eaf_fk_artista_artista_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.estampa_estampa
+    ADD CONSTRAINT estampa_estampa_artista_id_464a6eaf_fk_artista_artista_id FOREIGN KEY (artista_id) REFERENCES public.artista_artista(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: producto_estampa producto_estampa_artista_id_5e9c321d_fk_users_user_id; Type: FK CONSTRAINT; Schema: public; Owner: olarte9711
+--
+
+ALTER TABLE ONLY public.producto_estampa
+    ADD CONSTRAINT producto_estampa_artista_id_5e9c321d_fk_users_user_id FOREIGN KEY (artista_id) REFERENCES public.users_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
