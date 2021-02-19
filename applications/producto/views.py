@@ -18,7 +18,9 @@ from .forms import EstampaForm
 class ListAllEstampa(ListView):
     template_name = 'producto/lista_catalogo.html'
     context_object_name='estampas'
-    
+    #paginación
+    paginate_by = 5
+    ordering='nombre'
     def get_queryset(self):
         print('************************')
         palabra_clave = self.request.GET.get("kword",'')
