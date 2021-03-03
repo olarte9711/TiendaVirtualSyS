@@ -1,5 +1,7 @@
 from django.db import models
 from applications.users.models import User
+from .managers import EstampaManager
+from model_utils.models import TimeStampedModel
 # Create your models here.
 class Estampa(models.Model):
     """Model definition for Estampa."""
@@ -27,6 +29,7 @@ class Estampa(models.Model):
     stock = models.IntegerField()
     num_ventas = models.IntegerField()
     descontino = models.BooleanField(default="False")
+    objects = EstampaManager()
 
     class Meta:
         """Meta definition for Estampa."""
@@ -38,3 +41,42 @@ class Estampa(models.Model):
         """Unicode representation of Estampa."""
         return str(self.id)+'-'+self.nombre
 
+class Camiseta(models.Model):
+    TALLA_CHOICES={
+        ('0','S'),
+        ('1','M'),
+        ('2','L'),
+        ('3','XL'),
+    }
+    COLOR_CHOICES={
+        ('0','AZUL'),
+        ('1','ROJO'),
+        ('2','BLANCO'),
+        ('3','NEGRO'),
+        ('4','VERDE'),
+        ('5','AMARILLO'),
+    }
+    MATERIAL_CHOICES={
+        ('0','ALGODON'),
+        ('1','POLIESTER'),
+        ('2','TRI-BLEND'),
+    }
+
+
+    num_documento = models.CharField("Comprador", max_length=50)
+    valor = models.IntegerField()
+    estampa = models.ForeignKey(Estampa, on_delete=models.CASCADE)
+    
+    comprado = models.BooleanField(default="False")
+    talla = models.CharField('Talla', max_length=1,choices=TALLA_CHOICES)
+    color = models.CharField('Color', max_length=1,choices=COLOR_CHOICES)
+    material = models.CharField('Material', max_length=1,choices=MATERIAL_CHOICES)
+    class Meta:
+        """Meta definition for Estampa."""
+
+        verbose_name = 'Camiseta'
+        verbose_name_plural = 'Camisetas'
+
+    def __str__(self):
+        """Unicode representation of Estampa."""
+        return str(self.id)+'-'+self.estampa.nombre+'-'+self.num_documento

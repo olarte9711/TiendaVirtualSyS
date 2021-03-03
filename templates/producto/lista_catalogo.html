@@ -8,36 +8,30 @@
 
 <div class="grid-x grid-margin-x">
   <div class="cell grid-x grid-margin-x">
-    <form class="cell small-9 input-group" method="GET">
-      <span class="input-group-label">Nombre</span>
+    <div class="grid-x grid-margin-x">
+  <form class="cell grid-x grid-margin-x" method="GET">
+     <span class="input-group-label">Nombre</span>
       <input class="input-group-field" type="text" id="kword" name="kword" placeholder="nombre o codigo...">
-      <div class="input-group-button">
-        <input type="submit" class="button secondary" value="Buscar">
-      </div>
-    </form>
-    <div class="cell small-3">
-      <a href="{% url 'estampa_app:nueva_estampa' %}" class="button success">Registrar Nuevo</a>
+      <a href="{% url 'estampa_app:nueva_estampa' %}" class="button">Registrar Nuevo</a>
+    
+
+      
+
+    <div class="cell grid-x grid-margin-x">
+        <p class="cell">Busqueda avanzada:</p>
+        <input type="text" name="artista" id="artista" class="cell medium-3" placeholder="Artista">
+        <input type="text" name="popularidad" id="popularidad" class="cell medium-3" placeholder="Popularidad">
+        <input type="text" name="tema" id="tema" class="cell medium-3" placeholder="Tema...">
+        <button class="cell medium-3 button success">Buscar</button>
+       
     </div>
+  </form>
+    
   </div>
 
+  
 
-  <div class="cell grid-x grid-margin-x">
-    <div class="cell small-2">
-      <a href="?order=name">
-        <span class="label warning">Por Nombre</span>
-      </a>
-    </div>
-    <div class="cell small-2">
-      <a href="?order=date">
-        <span class="label secondary">Por Fecha</span>
-      </a>
-    </div>
-    <div class="cell small-2">
-      <a href="?order=stok">
-        <span class="label">Por Stok</span>
-      </a>
-    </div>
-  </div>
+
 
   <div class="cell grid-x grid-margin-x" style="margin-top: 2em;">
     <table class="hover">
@@ -93,5 +87,6 @@
             {% endif %}
                 
 </div>
+
 
 {% endblock panel-content %}

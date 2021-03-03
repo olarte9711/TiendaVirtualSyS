@@ -1,7 +1,7 @@
-# django
+ # django
 from django import forms
 # local
-from .models import Estampa
+from .models import Estampa, Camiseta
 
 
 class EstampaForm(forms.ModelForm):
@@ -47,6 +47,24 @@ class EstampaForm(forms.ModelForm):
                 }
             ),
             
+        }
+
+class CamisetaForm(forms.ModelForm):
+    class Meta:
+        model = Camiseta
+        fields = (
+            'num_documento',
+            'talla',
+            'color',
+            'material',
+        )
+        widgets = {
+            'nom_comprador': forms.TextInput(
+                attrs = {
+                    'placeholder': 'Nombre de estampa',
+                    'class': 'input-group-field',
+                }
+            ),
         }
     # validations
    

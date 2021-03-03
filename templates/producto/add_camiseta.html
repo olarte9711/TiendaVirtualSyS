@@ -1,0 +1,59 @@
+
+{% extends "producto/base_producto.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+
+
+<h4>{{ estampa}}</h4>
+<div class="grid-x grid-margin-x align-center">
+    <h3 class="cell" style="margin-bottom: 1em; text-align: center;">Datos de Camiseta</h3> 
+    
+    El color y la talla no genera costo adicional, el material de la camiseta sí. <br><br>
+    Precios: <br>
+    Algodon: 16.000<br>
+    Poliester: 12.000<br>
+    Tri-blend: 10.000<br>
+    
+
+    <form class="cell medium-9 grid-x grid-margin-x" method="POST"  enctype="multipart/form-data">{% csrf_token %}
+   <div>{{objects.nombre}}</div>
+      <div class="cell medium-6">
+        <label>C.C. Comprador:</label>
+        <div class="input-group">
+          <span class="input-group-label"><i class="fi-book"></i></span>
+          {{form.num_documento}}
+        </div>
+      </div>
+  
+      <div class="cell medium-6">
+        <label>Talla:</label>
+        <div class="input-group">
+          {{form.talla}}
+        </div>
+      </div>
+      <div class="cell medium-6">
+          <label>Color:</label>
+          <div class="input-group">
+            <span class="input-group-label"><i class="fi-price-tag"></i></span>
+            {{ form.color }}
+          </div>
+        </div>
+      <div class="cell medium-6">
+        <label>Material:</label>
+        <div class="input-group">
+          <span class="input-group-label"><i class="fi-calendar"></i></span>
+          {{ form.material }}
+        </div>
+      </div>
+  
+      
+  
+      <div class="cell medium-6">
+        <button type="submit" class="success button" style="width: 200px;">Confirmar</button>
+      </div>
+    </form>
+</div>
+{% endblock panel-content %}

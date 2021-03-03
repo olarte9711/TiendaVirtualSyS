@@ -10,7 +10,7 @@
     <div class="cell medium-6">
         <div class="card cell">
             <div class="card-section">
-              <h4>{{ estampa.nombre }}</h4>
+              
               <p><span style="font-weight: bold;">Nombre:</span> {{ estampa.nombre }}</p>
               <p><span style="font-weight: bold;">Artista:</span> {{ estampa.artista.full_name }}</p>
               <p><span style="font-weight: bold;">Valor:</span> {{ estampa.valor }}</p>
@@ -29,7 +29,15 @@
         </div>
     </div>
     </div>
+    <div class="cell medium-6"></div>
+    <div class="cell medium-6">
+      <form method="GET" name="kword">
+        </form>
+        <a href="{% url 'estampa_app:nueva_camiseta' estampa.id %}" class="success button" style="width: 200px;" >Añadir al carrito</a>
+    </div>
 </div>
+
+
 
 {% endblock panel-content %}
 

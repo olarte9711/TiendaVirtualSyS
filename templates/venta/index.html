@@ -1,0 +1,82 @@
+{% extends "venta/base_venta.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+<div class="grid-x grid-margin-x">
+  
+  <div class="grid-x grid-margin-x" style="padding: 1.5em;">
+    <!-- contendor de la lista de productos en venta -->
+    <div class="cell medium-8">
+      <h5 class="cell"> Productos en Venta</h5>
+      <table class="hover">
+        <thead>
+          <th width="50">COD</th>
+          <th width="200">Estampa</th>
+          <th width="120">Color</th>
+          <th width="50">Talla</th>
+          <th width="80">Material</th>
+          <th width="100">Precio</th>
+          <th>Acciones</th>
+          <th></th>
+        </thead>
+        <tbody>
+            {% for camiseta in camisetas %}
+            <tr>
+              <td>{{ camiseta.code }}</td>
+              <td>{{ camiseta.camiseta.estampa.nombre }}</td>
+              <td>{{ camiseta.camiseta.get_color_display }}</td>
+              <td>{{ camiseta.camiseta.get_talla_display }}</td>
+              <td>{{ camiseta.camiseta.get_material_display }}</td>
+              <td>{{ camiseta.camiseta.valor }}</td>
+              <td>
+                <form action="{% url 'venta_app:carshop-delete' camiseta.id %}" method="POST">{% csrf_token %}
+                  <button type="submit" class="button alert"><i class="fi-x"></i></button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- contiene los resultados resltantes -->
+    <div class="cell medium-4">
+      <div class="callout success" style="text-align: center;">
+        <h5>Total a Cobrar:</h5>
+        <h2> $ {{ total_cobrar }} </h2>
+      </div>
+
+      <br>
+
+      <form class="cell" action="{% url 'venta_app:venta-simple' %}" 
+        method="POST">{% csrf_token %}
+        <button type="submit" class="cell button primery" style="padding: 1.5em;">
+          <i class="fi-credit-card"></i>
+          <span>Pagar Todo</span>
+        </button>
+      </form>
+      <form action="{% url 'venta_app:venta-list'%}"
+      >
+      <button  class="cell button success" style="padding: 1.5em;">
+        <i class="fi-print"></i>
+          <span>Ultimas ventas</span>
+      </button>
+      </form>
+      <form class="cell" action="{% url 'venta_app:carshop-delete_all' %}" 
+        method="POST">{% csrf_token %}
+        <button type="submit" class="cell hollow button alert">
+          <i class="fi-trash"></i>
+          <span>Limpiar Todo</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+ 
+
+</div>
+
+{% endblock panel-content %}

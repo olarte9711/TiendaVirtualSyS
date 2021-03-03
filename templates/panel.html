@@ -18,9 +18,7 @@
                 <li class="{% if request.resolver_match.url_name == 'producto-lista' %}activeli{% endif %}">
                   <a href="{% url 'estampa_app:catalogo_estampas' %}" style="color: white;">Estampas</a>
                 </li>
-                <li class="{% if request.resolver_match.url_name == 'producto-filtros' %}activeli{% endif %}">
-                  <a href="" style="color: white;">Reportes</a>
-                </li>
+                
               </ul>
             </li>
         </ul>
@@ -28,8 +26,8 @@
             <li>
               <a href="#"><span class="label warning">Ventas</span></a>
               <ul class="nested vertical menu">
-                <li class="{% if request.resolver_match.url_name == 'venta-index' %}activeli{% endif %}">
-                  <a href="" style="color: white;">Carrito</a>
+                <li>
+                  <a href="{% url 'venta_app:venta_index' %}" style="color: white;">Carrito</a>
                 </li>
                 
               </ul>
@@ -41,7 +39,7 @@
               <ul class="nested vertical menu">
                 
                 <li class="{% if request.resolver_match.url_name == 'user-lista' %}activeli{% endif %}">
-                  <a href="" style="color: white;">Usuarios</a>
+                  <a href="{% url 'users_app:user-lista' %}" style="color: white;">Usuarios</a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'admin-reporte' %}activeli{% endif %}">
                   <a href="" style="color: white;">Reportes</a>
@@ -57,10 +55,10 @@
       <div class="grid-x">
         <div class="cell top-bar" style="background-color: #000000;">
           <div class="top-bar-left">
-            <h4 style="color: white;">Sesion de: {{ user.full_name }}</h4>
+            <h4 style="color: white;">Sesion de: {{ user.username }}</h4>
           </div>
           <div class="top-bar-right">
-            <a href="">
+            <a href="{% url 'users_app:user-logout' %}"></a>
               <span class="label warning">Salir</span>
             </a>
           </div>

@@ -8,5 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #Incluimos las urls de las apps
     re_path('',include('applications.producto.urls')),
-    
+    re_path('',include('applications.users.urls')),
+    re_path('',include('applications.venta.urls')),
+   
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

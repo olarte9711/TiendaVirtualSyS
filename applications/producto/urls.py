@@ -16,6 +16,11 @@ urlpatterns = [
         name='nueva_estampa'
     ),
     path(
+        'crear-camiseta/<pk>',
+        views.AddCamiseta.as_view(),
+        name='nueva_camiseta'
+    ),
+    path(
         'success/',
         views.Success.as_view(),
         name='correcto'
